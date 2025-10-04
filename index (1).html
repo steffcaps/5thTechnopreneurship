@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5th Technopreneurship Prefinals</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.4s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+        .card:nth-child(5) { animation-delay: 0.8s; }
+        .card:nth-child(6) { animation-delay: 1.0s; }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .theme-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(238, 90, 36, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .emoji {
+            font-size: 1.8rem;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .schedule-item {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.3);
+        }
+
+        .schedule-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .schedule-item p {
+            margin: 4px 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #d63384;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 16px 0;
+            font-weight: 600;
+            border-left: 4px solid #d63384;
+        }
+
+        .deliverables-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .deliverables-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .deliverables-table td {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .deliverables-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .deliverables-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        .criteria {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 16px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .submission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .submission-item {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(252, 182, 159, 0.3);
+        }
+
+        .submission-item h4 {
+            margin: 0 0 8px 0;
+            color: #d63384;
+            font-weight: 700;
+        }
+
+        .submission-item p {
+            margin: 4px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .card {
+                padding: 24px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .theme-tags {
+                justify-content: center;
+            }
+            
+            .deliverables-table {
+                font-size: 0.9rem;
+            }
+            
+            .deliverables-table th,
+            .deliverables-table td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1 class="title">5th Technopreneurship Prefinals</h1>
+                <p class="subtitle">Innovation for a Sustainable Future</p>
+                <div class="theme-tags">
+                    <span class="tag">🌳 Deforestation & Biodiversity</span>
+                    <span class="tag">⚡ Renewable Energy</span>
+                    <span class="tag">🏥 Healthcare & Medical Services</span>
+                    <span class="tag">🌾 Agriculture & Agribusiness</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <span class="emoji">📅</span>
+                Schedule & Rules
+            </h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <h3>B187</h3>
+                    <p><strong>Nov 5, 2024</strong></p>
+                    <p>8:00 AM</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>B188</h3>
+                    <p><strong>Nov 7, 2024</strong></p>
+                    <p>8:00 AM</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>📍 Venue:</strong> To be announced by Oct 30 (via CCS channels)</p>
+            </div>
+            <div class="warning">
+                <p><strong>⚠️ Critical Rules:</strong></p>
+                <p>• All team members MUST be present – 1 absent = disqualification</p>
+                <p>• No latecomers allowed</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <span class="emoji">📋</span>
+                4 Required Deliverables
+            </h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">Each worth 100 pts – 5 criteria × 20 pts</p>
+            
+            <table class="deliverables-table">
+                <thead>
+                    <tr>
+                        <th>Deliverable</th>
+                        <th>Evaluation Criteria</th>
+                        <th>Total Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pitch Deck</strong></td>
+                        <td>
+                            Clarity, Innovation, Idea Feasibility, Design/Visual Appeal, Team Readiness
+                            <div class="criteria">(5 criteria × 20 pts each)</div>
+                        </td>
+                        <td><strong>100 pts</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Live Pitch</strong></td>
+                        <td>
+                            Problem, Impact, Delivery, Timing, Q&A
+                            <div class="criteria">(5 criteria × 20 pts each)</div>
+                        </td>
+                        <td><strong>100 pts</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brochure</strong></td>
+                        <td>
+                            Content, Visuals, Tech Clarity, Call to Action, Polish
+                            <div class="criteria">(5 criteria × 20 pts each)</div>
+                        </td>
+                        <td><strong>100 pts</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Poster</strong></td>
+                        <td>
+                            Key Message, Layout, Creativity, Hierarchy, Accuracy
+                            <div class="criteria">(5 criteria × 20 pts each)</div>
+                            <div class="criteria">(All technical claims, data, names, and descriptions are factually correct and truthful—no exaggerations or errors.)</div>
+                        </td>
+                        <td><strong>100 pts</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <span class="emoji">🌍</span>
+                SDG Alignment
+            </h2>
+            <div class="highlight-box">
+                <p><strong>Requirements:</strong></p>
+                <p>• Clearly identify which UN Sustainable Development Goal(s) your solution supports (e.g., SDG 4 – Quality Education, SDG 9 – Industry Innovation, SDG 11 – Sustainable Cities)</p>
+                <p>• Explain how your project contributes to that goal (1–2 sentences in pitch/brochure)</p>
+                <p>• Use official SDG icons or color bands in your poster/brochure for visual linkage</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <span class="emoji">📜</span>
+                Policy Alignment
+            </h2>
+            <div class="highlight-box">
+                <p><strong>Connect your solution to relevant policies:</strong></p>
+                <p>• University, local, or national policies (e.g., MSU-IIT Student Welfare Policy, DICT Digital Innovation Agenda, LGU Youth Entrepreneurship Programs)</p>
+                <p>• Show awareness of regulatory or institutional frameworks that support or guide your idea</p>
+                <p>• Mention alignment in your pitch and documentation</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">
+                <span class="emoji">📤</span>
+                Submission & Logistics
+            </h2>
+            
+            <div class="submission-grid">
+                <div class="submission-item">
+                    <h4>📄 Printed Materials</h4>
+                    <p>Brochure + Poster</p>
+                    <p><strong>Bring on Prefinals Day</strong></p>
+                </div>
+                <div class="submission-item">
+                    <h4>💻 Digital Copies</h4>
+                    <p>Pitch Deck PDF + Brochure PDF + Poster PDF</p>
+                    <p><strong>B187:</strong> Nov 4, 5:00 PM</p>
+                    <p><strong>B188:</strong> Nov 4, 5:00 PM</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>👔 Dress Code:</strong> Formal or Smart Casual</p>
+                <p><strong>📍 Venue Updates:</strong> CCS bulletin boards & class group (by Oct 30)</p>
+                <p><strong>❓ Urgent Questions:</strong> Message your Techno Instructor on Google Chat</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p><strong>🚀 Ready to innovate for a sustainable future?</strong></p>
+            <p>Good luck to all teams! Let's create solutions that matter.</p>
+        </div>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98988a6922b0fee5',t:'MTc1OTYyMTM5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
